@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buyers Network</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // Array to Store Registered Buyers (Simulating a Database)
+const buyers = [
+{
+  name: "John Doe",
+  email: "john.doe@example.com",
+  location: "North Region",
+  type: "Wholesaler",
+},
+{
+  name: "Jane Smith",
+  email: "jane.smith@example.com",
+  location: "South Region",
+  type: "Retailer",
+},
+];
+
+// Function to Render Buyer Cards
+function renderBuyers() {
+const buyersContainer = document.getElementById("buyers-container");
+buyersContainer.innerHTML = ""; // Clear existing buyers
+
+buyers.forEach((buyer) => {
+  const buyerCard = document.createElement("div");
+  buyerCard.classList.add("buyer-card");
+
+  buyerCard.innerHTML = `
+    <h3>${buyer.name}</h3>
+    <p><strong>Email:</strong> ${buyer.email}</p>
+    <p><strong>Location:</strong> ${buyer.location}</p>
+    <p><strong>Type:</strong> ${buyer.type}</p>
+  `;
+
+  buyersContainer.appendChild(buyerCard);
+});
+}
+
+// Add New Buyer from Registration Form
+document.getElementById("buyer-form").addEventListener("submit", (event) => {
+event.preventDefault(); // Prevent form from refreshing the page
+
+const name = document.getElementById("buyer-name").value;
+const email = document.getElementById("buyer-email").value;
+const location = document.getElementById("buyer-location").value;
+const type = document.getElementById("buyer-type").value;
+
+buyers.push({ name, email, location, type });
+
+// Clear Form Inputs
+document.getElementById("buyer-form").reset();
+
+// Re-render Buyer Listings
+renderBuyers();
+
+alert("Buyer registered successfully!");
+});
+
+// Initial Render of Buyers
+renderBuyers();
+
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Buyers Network</h1>
+    <p>Connect with verified buyers across the region to sell your produce directly!</p>
+  </header>
+
+  <main>
+    <!-- Buyer Registration Section -->
+    <section id="register-buyer">
+      <h2>Register as a Buyer</h2>
+      <form id="buyer-form">
+        <label for="buyer-name">Name:</label>
+        <input type="text" id="buyer-name" placeholder="Enter your name" required />
+
+        <label for="buyer-email">Email:</label>
+        <input type="email" id="buyer-email" placeholder="Enter your email" required />
+
+        <label for="buyer-location">Location:</label>
+        <input type="text" id="buyer-location" placeholder="Enter your location" required />
+
+        <label for="buyer-type">Type of Buyer:</label>
+        <select id="buyer-type">
+          <option value="wholesaler">Wholesaler</option>
+          <option value="retailer">Retailer</option>
+          <option value="exporter">Exporter</option>
+        </select>
+
+        <button type="submit">Register</button>
+      </form>
+    </section>
+
+    <!-- Buyer Listings Section -->
+    <section id="buyer-listings">
+      <h2>Verified Buyers</h2>
+      <div id="buyers-container">
+        <!-- Example Buyer Card -->
+        <div class="buyer-card">
+          <h3>John Doe</h3>
+          <p><strong>Email:</strong> john.doe@example.com</p>
+          <p><strong>Location:</strong> North Region</p>
+          <p><strong>Type:</strong> Wholesaler</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Buyers Network. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
+<style>
+    /* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+  }
+  
+  header {
+    text-align: center;
+    padding: 20px;
+    background-color: #007BFF;
+    color: white;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  /* Buyer Registration Section */
+  #register-buyer {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  #register-buyer h2 {
+    color: #007BFF;
+    margin-bottom: 15px;
+  }
+  
+  #register-buyer label {
+    display: block;
+    margin: 10px 0 5px;
+  }
+  
+  #register-buyer input,
+  #register-buyer select,
+  #register-buyer button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  #register-buyer button {
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+  }
+  
+  #register-buyer button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Buyer Listings Section */
+  #buyer-listings h2 {
+    margin-bottom: 15px;
+    color: #007BFF;
+  }
+  
+  #buyers-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .buyer-card {
+    width: 300px;
+    padding: 15px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .buyer-card h3 {
+    color: #007BFF;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+</style>

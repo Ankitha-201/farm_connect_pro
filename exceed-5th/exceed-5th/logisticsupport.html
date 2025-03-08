@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logistics Support</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Array to Store Shipments (Simulating a Database)
+const shipments = [
+{
+  id: 1,
+  pickupLocation: "Farmer's Warehouse, North Region",
+  dropoffLocation: "Retailer Market, South Region",
+  cropDetails: "Fresh Tomatoes (500 kg)",
+  deliveryDate: "2024-12-06",
+  status: "In Transit",
+},
+];
+
+// Function to Render Ongoing Shipments
+function renderShipments() {
+const shipmentsContainer = document.getElementById("shipments-container");
+shipmentsContainer.innerHTML = ""; // Clear existing shipments
+
+shipments.forEach((shipment) => {
+  const shipmentCard = document.createElement("div");
+  shipmentCard.classList.add("shipment-card");
+
+  shipmentCard.innerHTML = `
+    <h3>Shipment #${shipment.id}</h3>
+    <p><strong>Pickup Location:</strong> ${shipment.pickupLocation}</p>
+    <p><strong>Drop-off Location:</strong> ${shipment.dropoffLocation}</p>
+    <p><strong>Crop:</strong> ${shipment.cropDetails}</p>
+    <p><strong>Delivery Date:</strong> ${shipment.deliveryDate}</p>
+    <p><strong>Status:</strong> ${shipment.status}</p>
+  `;
+
+  shipmentsContainer.appendChild(shipmentCard);
+});
+}
+
+// Add New Shipment from Form
+document.getElementById("logistics-form").addEventListener("submit", (event) => {
+event.preventDefault(); // Prevent form from refreshing the page
+
+const pickupLocation = document.getElementById("pickup-location").value;
+const dropoffLocation = document.getElementById("dropoff-location").value;
+const cropDetails = document.getElementById("crop-details").value;
+const preferredDate = document.getElementById("preferred-date").value;
+
+shipments.push({
+  id: shipments.length + 1,
+  pickupLocation,
+  dropoffLocation,
+  cropDetails,
+  deliveryDate: preferredDate,
+  status: "Pending",
+});
+
+// Clear Form Inputs
+document.getElementById("logistics-form").reset();
+
+// Re-render Shipments
+renderShipments();
+
+alert("Logistics request added successfully!");
+});
+
+// Initial Render of Shipments
+renderShipments();
+
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Logistics Support</h1>
+    <p>Streamline your crop delivery with reliable logistics services!</p>
+  </header>
+
+  <main>
+    <!-- Add Logistics Request -->
+    <section id="add-logistics">
+      <h2>Request Logistics Support</h2>
+      <form id="logistics-form">
+        <label for="pickup-location">Pickup Location:</label>
+        <input type="text" id="pickup-location" placeholder="Enter pickup location" required />
+
+        <label for="dropoff-location">Drop-off Location:</label>
+        <input type="text" id="dropoff-location" placeholder="Enter drop-off location" required />
+
+        <label for="crop-details">Crop Details:</label>
+        <input type="text" id="crop-details" placeholder="Type of crop and quantity" required />
+
+        <label for="preferred-date">Preferred Delivery Date:</label>
+        <input type="date" id="preferred-date" required />
+
+        <button type="submit">Request Logistics</button>
+      </form>
+    </section>
+
+    <!-- Ongoing Shipments -->
+    <section id="ongoing-shipments">
+      <h2>Ongoing Shipments</h2>
+      <div id="shipments-container">
+        <!-- Example Shipment Card -->
+        <div class="shipment-card">
+          <h3>Shipment #1</h3>
+          <p><strong>Pickup Location:</strong> Farmer's Warehouse, North Region</p>
+          <p><strong>Drop-off Location:</strong> Retailer Market, South Region</p>
+          <p><strong>Crop:</strong> Fresh Tomatoes (500 kg)</p>
+          <p><strong>Delivery Date:</strong> 2024-12-06</p>
+          <p><strong>Status:</strong> In Transit</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Logistics Support. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
+<style>
+    /* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+  }
+  
+  header {
+    text-align: center;
+    padding: 20px;
+    background-color: #2A9D8F;
+    color: white;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  /* Logistics Request Section */
+  #add-logistics {
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 40px;
+  }
+  
+  #add-logistics h2 {
+    color: #2A9D8F;
+    margin-bottom: 15px;
+  }
+  
+  #add-logistics label {
+    display: block;
+    margin: 10px 0 5px;
+  }
+  
+  #add-logistics input,
+  #add-logistics button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  #add-logistics button {
+    background-color: #2A9D8F;
+    color: white;
+    cursor: pointer;
+  }
+  
+  #add-logistics button:hover {
+    background-color: #1f776b;
+  }
+  
+  /* Ongoing Shipments Section */
+  #ongoing-shipments h2 {
+    margin-bottom: 15px;
+    color: #2A9D8F;
+  }
+  
+  #shipments-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .shipment-card {
+    width: 300px;
+    padding: 15px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .shipment-card h3 {
+    color: #2A9D8F;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #2A9D8F;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+</style>

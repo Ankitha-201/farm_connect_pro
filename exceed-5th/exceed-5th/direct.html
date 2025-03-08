@@ -1,0 +1,462 @@
+<!--<html><head><base href=><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FarmConnect Pro - Direct Farm to Buyer</title>
+    <style>
+    :root {
+        --primary: #4CAF50;
+        --secondary: #388E3C;
+        --dark: #1B5E20;
+        --light: #E8F5E9;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+    
+    body {
+        background: var(--light);
+        color: var(--dark);
+        line-height: 1.6;
+    }
+    
+    nav {
+        background: var(--dark);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+    
+    .nav-brand {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+    }
+    
+    .nav-link {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        transition: background 0.3s ease;
+    }
+    
+    .nav-link:hover {
+        background: var(--secondary);
+    }
+    
+    .hero {
+        background: linear-gradient(rgba(76, 175, 80, 0.9), rgba(56, 142, 60, 0.9));
+        padding: 4rem 2rem;
+        text-align: center;
+        color: white;
+    }
+    
+    .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 4rem 2rem;
+    }
+    
+    .feature-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1rem;
+        color: var(--primary);
+    }
+    
+    .cta-button {
+        background: var(--primary);
+        color: white;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 25px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        margin-top: 2rem;
+    }
+    
+    .cta-button:hover {
+        background: var(--secondary);
+    }
+    
+    .role-cards {
+        display: none;
+        justify-content: center;
+        gap: 2rem;
+        padding: 2rem;
+        margin-top: 2rem;
+    }
+    
+    .role-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        width: 300px;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .role-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+    
+    .role-icon {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 1rem;
+        color: var(--primary);
+    }
+    
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+    }
+    
+    .floating {
+        animation: float 3s ease-in-out infinite;
+    }
+    
+    .show {
+        display: flex;
+    }
+    
+    .direct-selling {
+        padding: 4rem 2rem;
+        text-align: center;
+    }
+    
+    .selling-cards {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    
+    .selling-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        width: 300px;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+    
+    .selling-card:hover {
+        transform: translateY(-10px);
+    }
+    
+    </style>
+    </head>
+    <body>
+        <nav>
+            <a href="https://farmconnect.pro" class="nav-brand">FarmConnect Pro</a>
+            <div class="nav-links">
+                <a href="about.html">Home</a>
+                <a href="https://example.com/contact">Contact</a>
+                <a href="https://example.com/home">About us</a>
+                <a href="https://example.com/home">help</a>
+                <a href="login.html">Login</a>
+            </div>
+        </nav>
+    
+        <header class="hero">
+            <h1 class="floating">FarmConnect Pro</h1>
+            <p>Direct Farm-to-Buyer Marketplace</p>
+            
+        </header>
+        <section class="direct-selling">
+            <h2>Direct Selling</h2>
+            <div class="selling-cards">
+                <div class="selling-card">
+                    <svg class="feature-icon" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M15,14C12.3,14 7,15.3 7,18V20H23V18C23,15.3 17.7,14 15,14M15,12A4,4 0 0,0 19,8A4,4 0 0,0 15,4A4,4 0 0,0 11,8A4,4 0 0,0 15,12M5,15L4.4,14.5C2.4,12.6 1,11.4 1,9.9C1,8.7 2,7.7 3.2,7.7C3.9,7.7 4.6,8 5,8.5C5.4,8 6.1,7.7 6.8,7.7C8,7.7 9,8.6 9,9.9C9,11.4 7.6,12.6 5.6,14.5L5,15Z"/>
+                    </svg>
+                    <h3>For Farmers</h3>
+                    <p>List your products and reach buyers directly</p>
+                    <button class="cta-button" onclick="window.location.href='farmer.html'">Join as Farmer</button>
+                </div>
+                <div class="selling-card">
+                    <svg class="feature-icon" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12,13A5,5 0 0,1 7,8H9A3,3 0 0,0 12,11A3,3 0 0,0 15,8H17A5,5 0 0,1 12,13M12,3A3,3 0 0,1 15,6H9A3,3 0 0,1 12,3M19,6H17A5,5 0 0,0 12,1A5,5 0 0,0 7,6H5C3.89,6 3,6.89 3,8V20A2,2 0 0,0 5,22H19A2,2 0 0,0 21,20V8C21,6.89 20.1,6 19,6Z"/>
+                    </svg>
+                    <h3>For Buyers</h3>
+                    <p>Source fresh produce directly from farmers</p>
+                    <button class="cta-button" onclick="window.location.href='buyer.html'">Join as Buyer</button>
+                </div>
+            </div>
+        </section>
+    
+        <script>
+            document.getElementById('exploreBtn').addEventListener('click', function() {
+                document.getElementById('roleCards').classList.add('show');
+                this.scrollIntoView({ behavior: 'smooth' });
+            });
+    
+            function selectRole(role) {
+                if(role === 'farmer') {
+                    window.location.href = 'https://farmconnect.pro/farmer-signup';
+                } else {
+                    window.location.href = 'https://farmconnect.pro/buyer-signup';
+                }
+            }
+        </script>
+    </body></html>-->
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Direct Selling Section</title>
+      <link rel="stylesheet" href="styles.css">
+      <script>  
+          document.querySelector('.product-card').addEventListener('click', function() {
+              alert('Submitted Successfully');
+          });
+  
+        // Example Products Array (You can fetch this from a backend or API)
+ const products = [
+{
+  id: 1,
+  name: "Fresh Tomatoes",
+  price: 20,
+  quantity: 100,
+  farmer: "John Doe",
+  location: "North Region",
+  type: "organic",
+  image: "crop-placeholder.jpg",
+},
+{
+  id: 2,
+  name: "Golden Potatoes",
+  price: 15,
+  quantity: 200,
+  farmer: "Jane Smith",
+  location: "South Region",
+  type: "non-organic",
+  image: "crop-placeholder.jpg",
+},
+];
+
+// Dynamically Render Products
+function renderProducts(filteredProducts = products) {
+const productList = document.getElementById("product-list");
+productList.innerHTML = "";
+
+filteredProducts.forEach((product) => {
+  const productCard = document.createElement("div");
+  productCard.classList.add("product-card");
+
+  productCard.innerHTML = `
+    <img src="${product.image}" alt="${product.name}" />
+    <h3>${product.name}</h3>
+    <p><strong>Price:</strong> $${product.price} per kg</p>
+    <p><strong>Available Quantity:</strong> ${product.quantity} kg</p>
+    <p><strong>Farmer:</strong> ${product.farmer}</p>
+    <p><strong>Location:</strong> ${product.location}</p>
+    <button class="buy-button" data-product-id="${product.id}">Buy Now</button>
+  `;
+
+  productList.appendChild(productCard);
+});
+}
+
+// Filter Products Based on Criteria
+document.getElementById("filter-button").addEventListener("click", () => {
+const searchQuery = document.getElementById("search").value.toLowerCase();
+const locationFilter = document.getElementById("filter-location").value;
+const typeFilter = document.getElementById("filter-type").value;
+
+const filteredProducts = products.filter((product) => {
+  return (
+    product.name.toLowerCase().includes(searchQuery) &&
+    (locationFilter === "all" || product.location === locationFilter) &&
+    (typeFilter === "all" || product.type === typeFilter)
+  );
+});
+
+renderProducts(filteredProducts);
+});
+
+// Initialize Product Listings
+renderProducts();
+
+      </script> 
+    </head>
+    <body>
+      <header>
+        <h1>Direct Selling Platform</h1>
+        <p>Buy crops directly from farmers, no middlemen involved!</p>
+      </header>
+    
+      <main>
+         <!-- Search and Filter Section  -->
+        <section id="filters">
+          <input type="text" id="search" placeholder="Search for crops..." />
+          <select id="filter-location">
+            <option value="all">All Locations</option>
+            <option value="north">North Region</option>
+            <option value="south">South Region</option>
+            <option value="east">East Region</option>
+            <option value="west">West Region</option>
+          </select>
+          <select id="filter-type">
+            <option value="all">All Types</option>
+            <option value="organic">Organic</option>
+            <option value="non-organic">Non-Organic</option>
+          </select>
+          <button class="cta-button" onclick="window.location.href='apply.html'">Apply Filters</button>
+        </section>
+    
+         <!-- Product Listings Section  
+        <section id="product-list">
+           \* Example Product Card */ 
+          <div class="product-card">
+            <img src="crop-placeholder.jpg" alt="Product Image" />
+            <h3>Fresh Tomatoes</h3>
+            <p><strong>Price:</strong> $20 per kg</p>
+            <p><strong>Available Quantity:</strong> 100 kg</p>
+            <p><strong>Farmer:</strong> John Doe</p>
+            <p><strong>Location:</strong> North Region</p>
+            <button class="buy-button" data-product-id="1">Buy Now</button>
+          </div>
+          <div class="product-card">
+            <img src="crop-placeholder.jpg" alt="Product Image" />
+            <h3>Fresh Tomatoes</h3>
+            <p><strong>Price:</strong> $20 per kg</p>
+            <p><strong>Available Quantity:</strong> 100 kg</p>
+            <p><strong>Farmer:</strong> John Doe</p>
+            <p><strong>Location:</strong> North Region</p>
+            <button class="buy-button" data-product-id="1">Buy Now</button>
+          </div>
+        </section> -->
+      </main>
+    
+      <footer>
+        <p>&copy; 2024 Direct Selling Platform. All Rights Reserved.</p>
+      </footer>
+    
+      <script src="script.js"></script>
+    </body>
+    </html>
+    <style>
+        /* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+  }
+  
+  header {
+    text-align: center;
+    padding: 20px;
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  /* Filter Section */
+  #filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  #filters input,
+  #filters select,
+  #filters button {
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  /* Product Listings */
+  #product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .product-card {
+    width: 300px;
+    padding: 15px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .product-card h3 {
+    color: #4CAF50;
+  }
+  
+  .buy-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .buy-button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+    </style> 
+    

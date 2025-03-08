@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multilingual Support</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // Multilingual text data
+const translations = {
+    en: {
+      appTitle: "Welcome to Our Website",
+      welcomeMessage: "Welcome to our platform",
+      description: "Here you can sell crops, find buyers, and manage logistics with ease.",
+      footerText: "&copy; 2024 All Rights Reserved.",
+    },
+    hi: {
+      appTitle: "हमारी वेबसाइट पर आपका स्वागत है",
+      welcomeMessage: "हमारे मंच पर आपका स्वागत है",
+      description: "यहां आप फसलें बेच सकते हैं, खरीदार ढूंढ सकते हैं, और लॉजिस्टिक्स प्रबंधित कर सकते हैं।",
+      footerText: "&copy; 2024 सभी अधिकार सुरक्षित।",
+    },
+    ta: {
+      appTitle: "எங்கள் இணையதளத்திற்கு வரவேற்கிறோம்",
+      welcomeMessage: "எங்கள் தளத்திற்கு வரவேற்கிறோம்",
+      description: "இங்கு பயிர்களை விற்கவும், வாங்குபவர்களை கண்டறியவும் மற்றும் மின்சார மேலாண்மை செய்யவும்.",
+      footerText: "&copy; 2024 அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டுள்ளன.",
+    },
+    te: {
+      appTitle: "మా వెబ్‌సైట్‌కు స్వాగతం",
+      welcomeMessage: "మా వేదికకు స్వాగతం",
+      description: "ఇక్కడ మీరు పంటలను విక్రయించవచ్చు, కొనుగోలుదారులను కనుగొనవచ్చు మరియు లాజిస్టిక్స్‌ను నిర్వహించవచ్చు.",
+      footerText: "&copy; 2024 అన్ని హక్కులూ రిజర్వ్ చేయబడ్డాయి.",
+    },
+    bn: {
+      appTitle: "আমাদের ওয়েবসাইটে আপনাকে স্বাগত জানাই",
+      welcomeMessage: "আমাদের প্ল্যাটফর্মে আপনাকে স্বাগত জানাই",
+      description: "এখানে আপনি ফসল বিক্রি করতে পারেন, ক্রেতা খুঁজে পেতে পারেন এবং লজিস্টিক্স পরিচালনা করতে পারেন।",
+      footerText: "&copy; 2024 সর্বস্বত্ব সংরক্ষিত।",
+    },
+    kn: {
+      appTitle: "ನಮ್ಮ ವೆಬ್‌ಸೈಟ್‌ಗೆ ಸುಸ್ವಾಗತ",
+      welcomeMessage: "ನಮ್ಮ ವೇದಿಕೆಗೆ ಸುಸ್ವಾಗತ",
+      description: "ಇಲ್ಲಿ ನೀವು ಬೆಳೆಗಳನ್ನು ಮಾರಾಟ ಮಾಡಬಹುದು, ಖರೀದಿದಾರರನ್ನು ಕಂಡುಹಿಡಿಯಬಹುದು ಮತ್ತು ಲಾಜಿಸ್ಟಿಕ್ಸ್ ಅನ್ನು ನಿರ್ವಹಿಸಬಹುದು.",
+      footerText: "&copy; 2024 ಎಲ್ಲಾ ಹಕ್ಕುಗಳು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.",
+    },
+  };
+  
+  // Update page content based on selected language
+  function updateLanguage(language) {
+    document.getElementById("app-title").innerHTML = translations[language].appTitle;
+    document.getElementById("welcome-message").innerHTML = translations[language].welcomeMessage;
+    document.getElementById("description").innerHTML = translations[language].description;
+    document.getElementById("footer-text").innerHTML = translations[language].footerText;
+  }
+  
+  // Event listener for language selection
+  document.getElementById("language-select").addEventListener("change", (event) => {
+    const selectedLanguage = event.target.value;
+    updateLanguage(selectedLanguage);
+  });
+  
+  // Default language: English
+  updateLanguage("en");
+  
+  </script>
+</head>
+<body>
+  <header>
+    <h1 id="app-title">Welcome to Our Website</h1>
+    <label for="language-select">Select Language:</label>
+    <select id="language-select">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी (Hindi)</option>
+      <option value="ta">தமிழ் (Tamil)</option>
+      <option value="te">తెలుగు (Telugu)</option>
+      <option value="bn">বাংলা (Bengali)</option>
+      <option value="kn">ಕನ್ನಡ (Kannada)</option>
+    </select>
+  </header>
+
+  <main>
+    <section id="content">
+      <h2 id="welcome-message">Welcome to our platform</h2>
+      <p id="description">
+        Here you can sell crops, find buyers, and manage logistics with ease.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p id="footer-text">&copy; 2024 All Rights Reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<style>
+    /* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+  }
+  
+  header {
+    background-color: #2a9d8f;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  header label,
+  header select {
+    display: inline-block;
+    margin: 10px 5px;
+    font-size: 16px;
+  }
+  
+  main {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  footer {
+    background-color: #2a9d8f;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+</style>

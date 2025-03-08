@@ -1,0 +1,213 @@
+ <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Direct Selling Section</title>
+      <link rel="stylesheet" href="styles.css">
+      <script>
+        // Example Products Array (You can fetch this from a backend or API)
+const products = [
+{
+  id: 1,
+  name: "Fresh Tomatoes",
+  price: 20,
+  quantity: 100,
+  farmer: "John Doe",
+  location: "North Region",
+  type: "organic",
+  image: "crop-placeholder.jpg",
+},
+{
+  id: 2,
+  name: "Golden Potatoes",
+  price: 15,
+  quantity: 200,
+  farmer: "Jane Smith",
+  location: "South Region",
+  type: "non-organic",
+  image: "crop-placeholder.jpg",
+},
+];
+
+// Dynamically Render Products
+function renderProducts(filteredProducts = products) {
+const productList = document.getElementById("product-list");
+productList.innerHTML = "";
+
+filteredProducts.forEach((product) => {
+  const productCard = document.createElement("div");
+  productCard.classList.add("product-card");
+
+  productCard.innerHTML = `
+    <img src="${product.image}" alt="${product.name}" />
+    <h3>${product.name}</h3>
+    <p><strong>Price:</strong> $${product.price} per kg</p>
+    <p><strong>Available Quantity:</strong> ${product.quantity} kg</p>
+    <p><strong>Farmer:</strong> ${product.farmer}</p>
+    <p><strong>Location:</strong> ${product.location}</p>
+    <button class="buy-button" data-product-id="${product.id}">Buy Now</button>
+  `;
+
+  productList.appendChild(productCard);
+});
+}
+
+// Filter Products Based on Criteria
+document.getElementById("filter-button").addEventListener("click", () => {
+const searchQuery = document.getElementById("search").value.toLowerCase();
+const locationFilter = document.getElementById("filter-location").value;
+const typeFilter = document.getElementById("filter-type").value;
+
+const filteredProducts = products.filter((product) => {
+  return (
+    product.name.toLowerCase().includes(searchQuery) &&
+    (locationFilter === "all" || product.location === locationFilter) &&
+    (typeFilter === "all" || product.type === typeFilter)
+  );
+});
+
+renderProducts(filteredProducts);
+});
+
+// Initialize Product Listings
+renderProducts();
+
+      </script>
+    </head>
+    <body>
+      
+    
+      <main>
+        
+    
+        <!-- \* Product Listings Section */ -->
+        <section id="product-list">
+         <!-- \* Example Product Card */ -->
+          <div class="product-card">
+            <img src="crop-placeholder.jpg" alt="Product Image" />
+            <h3>Fresh Tomatoes</h3>
+            <p><strong>Price:</strong> $20 per kg</p>
+            <p><strong>Available Quantity:</strong> 100 kg</p>
+            <p><strong>Farmer:</strong> John Doe</p>
+            <p><strong>Location:</strong> North Region</p>
+            <!-- <button class="buy-button" data-product-id="1">Buy Now</button> -->
+          </div>
+          <div class="product-card">
+            <img src="crop-placeholder.jpg" alt="Product Image" />
+            <h3>Fresh Tomatoes</h3>
+            <p><strong>Price:</strong> $40 per kg</p>
+            <p><strong>Available Quantity:</strong> 50 kg</p>
+            <p><strong>Farmer:</strong> Jane</p>
+            <p><strong>Location:</strong> East Region</p>
+            <!-- <button class="buy-button" data-product-id="1">Buy Now</button> -->
+          </div>
+          <div class="product-card">
+            <img src="crop-placeholder.jpg" alt="Product Image" />
+            <h3>Fresh Tomatoes</h3>
+            <p><strong>Price:</strong> $10 per kg</p>
+            <p><strong>Available Quantity:</strong> 150 kg</p>
+            <p><strong>Farmer:</strong> Raj</p>
+            <p><strong>Location:</strong> south Region</p>
+            <!-- <button class="buy-button" data-product-id="1">Buy Now</button> -->
+          </div>
+        </section>
+      </main>
+    
+      <footer>
+        <p>&copy; 2024 Direct Selling Platform. All Rights Reserved.</p>
+      </footer>
+    
+      <script src="script.js"></script>
+    </body>
+    </html>
+    <style>
+        /* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+  }
+  
+  header {
+    text-align: center;
+    padding: 20px;
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  /* Filter Section */
+  #filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  #filters input,
+  #filters select,
+  #filters button {
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  /* Product Listings */
+  #product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .product-card {
+    width: 300px;
+    padding: 15px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .product-card h3 {
+    color: #4CAF50;
+  }
+  
+  .buy-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .buy-button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+    </style> 
+
+    

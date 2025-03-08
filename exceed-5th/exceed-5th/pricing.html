@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Pricing</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+const marketPrices = [
+  { crop: "Wheat", price: 2200, market: "Delhi" },
+  { crop: "Rice", price: 3000, market: "Mumbai" },
+  { crop: "Maize", price: 1800, market: "Hyderabad" },
+  { crop: "Cotton", price: 5000, market: "Chennai" },
+  { crop: "Soybean", price: 4200, market: "Bangalore" },
+];
+
+// Example historical price data for chart
+const historicalPrices = {
+  wheat: [2000, 2100, 2200, 2300, 2400],
+  rice: [2900, 3000, 3100, 3200, 3300],
+  maize: [1700, 1800, 1900, 2000, 2100],
+  cotton: [4900, 5000, 5100, 5200, 5300],
+  soybean: [4000, 4100, 4200, 4300, 4400],
+};
+
+// Populate Real-Time Market Prices Table
+function populateMarketPrices() {
+  const tableBody = document.getElementById("market-prices-table");
+  tableBody.innerHTML = ""; // Clear existing rows
+  marketPrices.forEach((data) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${data.crop}</td>
+      <td>₹${data.price}</td>
+      <td>${data.market}</td>
+    `;
+    tableBody.appendChild(row);
+  });
+}
+
+// Update Suggested Price
+document.getElementById("get-price").addEventListener("click", () => {
+  const selectedCrop = document.getElementById("crop-select").value;
+  const suggestedPrice = marketPrices.find((data) => data.crop.toLowerCase() === selectedCrop)?.price || 0;
+  document.querySelector("#suggested-price span").innerText = suggestedPrice;
+});
+
+// Render Historical Price Trend Chart
+function renderPriceChart(crop = "wheat") {
+  const ctx = document.getElementById("price-trend-chart").getContext("2d");
+  const prices = historicalPrices[crop];
+  const labels = ["Jan", "Feb", "Mar", "Apr", "May"];
+
+  new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: "Price (₹/quintal)",
+          data: prices,
+          borderColor: "#4CAF50",
+          fill: false,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+      },
+    },
+  });
+}
+
+// Initial Data Load
+populateMarketPrices();
+renderPriceChart();
+
+// Update Chart on Crop Selection
+document.getElementById("crop-select").addEventListener("change", (event) => {
+  renderPriceChart(event.target.value);
+});
+</script>
+</head>
+<body>
+  <header>
+    <h1>Smart Pricing</h1>
+    <p>Get real-time market insights to set competitive crop prices.</p>
+  </header>
+
+  <main>
+    <!-- Pricing Suggestion Section -->
+    <section id="pricing-suggestion">
+      <h2>Recommended Price for Your Crop</h2>
+      <label for="crop-select">Select Crop:</label>
+      <select id="crop-select">
+        <option value="wheat">Wheat</option>
+        <option value="rice">Rice</option>
+        <option value="maize">Maize</option>
+        <option value="cotton">Cotton</option>
+        <option value="soybean">Soybean</option>
+      </select>
+      <button id="get-price">Get Price</button>
+      <p id="suggested-price">Suggested Price: ₹<span>0.00</span>/quintal</p>
+    </section>
+
+    <!-- Real-Time Market Prices -->
+    <section id="market-prices">
+      <h2>Real-Time Market Prices</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Crop</th>
+            <th>Price (₹/quintal)</th>
+            <th>Market</th>
+          </tr>
+        </thead>
+        <tbody id="market-prices-table">
+          <!-- Rows will be populated dynamically -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Historical Price Trends -->
+    <section id="price-trends">
+      <h2>Historical Price Trends</h2>
+      <canvas id="price-trend-chart" width="400" height="200"></canvas>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Smart Pricing. All Rights Reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<style>
+    /* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+  }
+  
+  header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  section {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    color: #4CAF50;
+    margin-bottom: 10px;
+  }
+  
+  label {
+    font-size: 16px;
+    margin-right: 10px;
+  }
+  
+  select,
+  button {
+    font-size: 16px;
+    padding: 5px 10px;
+    margin: 10px 0;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #388e3c;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  table th,
+  table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  table th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  canvas {
+    margin-top: 20px;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+</style>

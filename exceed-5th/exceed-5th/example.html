@@ -1,0 +1,45 @@
+// List of crops with stable images and details
+const crops = [
+    { name: "Rice", quantity: "300 kg", price: "$40", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Indian_Rice.jpg/800px-Indian_Rice.jpg" },
+    { name: "Wheat", quantity: "200 kg", price: "$25", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Wheat_close-up.JPG/800px-Wheat_close-up.JPG" },
+    { name: "Tomato", quantity: "50 kg", price: "$30", image: "https://upload.wikimedia.org/wikipedia/commons/8/89/Tomato_je.jpg" },
+    { name: "Potato", quantity: "100 kg", price: "$20", image: "https://upload.wikimedia.org/wikipedia/commons/4/48/A_grande_batata.JPG" },
+    { name: "Corn", quantity: "150 kg", price: "$15", image: "https://upload.wikimedia.org/wikipedia/commons/5/54/Corn_field.jpg" },
+];
+
+// Display the list of crop cards
+function displayCrops() {
+    const container = document.getElementById("cropContainer");
+    container.innerHTML = ""; // Clear any existing crop cards
+
+    crops.forEach(crop => {
+        const cropCard = document.createElement("div");
+        cropCard.className = "col-md-4 mb-4";
+        cropCard.innerHTML = `
+            <div class="card shadow-sm crop-card">
+                <img src="${crop.image}" alt="${crop.name}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">${crop.name}</h5>
+                    <p class="card-text"><strong>Quantity:</strong> ${crop.quantity}</p>
+                    <p class="card-text"><strong>Price:</strong> ${crop.price}</p>
+                </div>
+            </div>
+        `;
+        container.appendChild(cropCard);
+    });
+}
+
+// Handle form submission and show crop details
+document.getElementById("form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent the page from refreshing
+
+    const buyerName = document.getElementById("buyerName").value;
+    const buyerEmail = document.getElementById("buyerEmail").value;
+
+    if (buyerName && buyerEmail) {
+        // Show crops after form submission
+        document.getElementById("buyerForm").style.display = "none"; // Hide the form
+        document.getElementById("cropsTitle").style.display = "block"; // Show the crops title
+        displayCrops(); // Show crop cards
+    }
+});

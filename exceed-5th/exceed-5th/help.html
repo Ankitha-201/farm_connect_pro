@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help Center</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #4CAF50;
+    }
+
+    /* FAQ Section */
+    .faq-container {
+      background: white;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .faq-item {
+      margin-bottom: 20px;
+    }
+
+    .faq-item h3 {
+      margin: 0;
+      color: #4CAF50;
+      cursor: pointer;
+    }
+
+    .faq-item p {
+      margin: 10px 0 0;
+      display: none;
+      line-height: 1.6;
+    }
+
+    .faq-item h3:hover {
+      text-decoration: underline;
+    }
+
+    /* Contact Section */
+    .contact-container {
+      background: white;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    }
+
+    .contact-container label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .contact-container input,
+    .contact-container textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .contact-container textarea {
+      height: 100px;
+    }
+
+    .contact-container button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .contact-container button:hover {
+      background-color: #45a049;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Help Center</h1>
+  </header>
+  <main>
+    <!-- FAQ Section -->
+    <section class="faq-container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>How do I buy products on this platform?</h3>
+        <p>To buy products, browse the product listings, select the product you want, and click "Buy Now." Follow the instructions to complete your purchase.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What payment methods are supported?</h3>
+        <p>We accept various payment methods, including credit cards, debit cards, and online payment platforms. Additional payment options may vary by region.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do I contact the seller?</h3>
+        <p>You can contact the seller through the messaging feature available on the product details page. Ensure your queries are clear and concise.</p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-container">
+      <h2>Still Need Help?</h2>
+      <form id="help-form">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name..." required>
+
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email..." required>
+
+        <label for="query">Your Query</label>
+        <textarea id="query" name="query" placeholder="Describe your issue..." required></textarea>
+
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 Direct Selling Platform. All Rights Reserved.</p>
+  </footer>
+  <script>
+    // FAQ Toggle Functionality
+    document.querySelectorAll(".faq-item h3").forEach((faqHeader) => {
+      faqHeader.addEventListener("click", () => {
+        const faqContent = faqHeader.nextElementSibling;
+        faqContent.style.display = faqContent.style.display === "block" ? "none" : "block";
+      });
+    });
+
+    // Contact Form Submission (Optional)
+    document.getElementById("help-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      alert("Thank you for reaching out! We'll respond to your query shortly.");
+      // Add backend integration for form submission here.
+    });
+  </script>
+</body>
+</html>
